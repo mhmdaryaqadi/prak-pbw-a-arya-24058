@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <nav class="navbar">
-            <a href="{{ url('/') }}" class="active">Home</a>
+            <a href="{{ url('/') }}" class="active">Dashboard</a>
             <a href="{{ url('/tentang-kami') }}">Tentang Kami</a>
             <a href="{{ url('/kontak') }}">Kontak</a>
         </nav>

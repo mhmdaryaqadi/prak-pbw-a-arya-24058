@@ -1,25 +1,25 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontak Kami - LaraPress</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-    <div class="container">
-        <nav class="navbar">
-            <a href="{{ url('/') }}">Home</a>
-            <a href="{{ url('/tentang-kami') }}">Tentang Kami</a>
-            <a href="{{ url('/kontak') }}" class="active">Kontak</a>
-        </nav>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Contact') }}
+        </h2>
+    </x-slot>
 
-        <h1>Kontak Kami</h1>
-        <p>Silahkan hubungi kami melalui telepon di: <strong>08123456789</strong></p>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 space-y-4">
+                    <h3 class="font-bold text-lg text-gray-800">Kontak Kami</h3>
+                    
+                    <p>
+                        Silahkan hubungi kami melalui telepon di: <strong>08123456789</strong>
+                    </p>
 
-        <div class="info-box">
-            Jam operasional layanan kami adalah Senin - Jumat, 09:00 - 17:00 WIB.
+                    <p class="text-sm text-gray-600">
+                        Jam operasional layanan kami adalah Senin - Jumat, 09:00 - 17:00 WIB.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-</body>
-</html>
+</x-app-layout>
