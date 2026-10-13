@@ -14,8 +14,8 @@ Repositori ini memuat seluruh kode sumber dan laporan hasil pengerjaan praktikum
 | Direktori | Pertemuan / Topik | Status / Shortcut Laporan |
 | :--- | :--- | :--- |
 | **`SMP-Mentari/`** | **Pertemuan 5** — CRUD, Dynamic Settings, & Auth (Breeze) | 🔗 [**Buka README & Dokumentasi Pertemuan 5**](./SMP-Mentari/README.md) |
-| **`LaraPress/`** | **Pertemuan 3** — Implementasi Routing & Blade Engine | 📁 [Lihat Folder Project](./LaraPress) |
-| **`prak-1/`** | **Pertemuan 1** — Dasar PHP: Modifikasi Kalkulator & Biodata | 📁 [Lihat Folder Project](./prak-1) |
+| **`LaraPress/`** | **Pertemuan 3-4** — Implementasi Routing & Blade Engine | 📁 [Lihat Folder Project](./LaraPress) |
+| **`prak-1/`** | **Pertemuan 1-2** — Dasar PHP: Modifikasi Kalkulator & Biodata | 📁 [Lihat Folder Project](./prak-1) |
 
 ---
 
