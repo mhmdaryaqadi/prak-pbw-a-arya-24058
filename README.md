@@ -13,6 +13,7 @@ Repositori ini memuat seluruh kode sumber dan laporan hasil pengerjaan praktikum
 
 | Direktori | Pertemuan / Topik | Status / Shortcut Laporan |
 | :--- | :--- | :--- |
+| **`authbook/`** | **Pertemuan 6-7** — Sistem Manajemen Buku (Laravel & Filament 3.x) | 🔗 [**Buka README & Dokumentasi Pertemuan 6-7**](./authbook/README.md) |
 | **`SMP-Mentari/`** | **Pertemuan 5** — CRUD, Dynamic Settings, & Auth (Breeze) | 🔗 [**Buka README & Dokumentasi Pertemuan 5**](./SMP-Mentari/README.md) |
 | **`LaraPress/`** | **Pertemuan 3-4** — Implementasi Routing & Blade Engine | 📁 [Lihat Folder Project](./LaraPress) |
 | **`prak-1/`** | **Pertemuan 1-2** — Dasar PHP: Modifikasi Kalkulator & Biodata | 📁 [Lihat Folder Project](./prak-1) |
