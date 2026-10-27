@@ -33,12 +33,27 @@ class BookResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->required()
                             ->maxLength(255),
+
+                        Forms\Components\Textarea::make('description')
+                            ->rows(3)
+                            ->columnSpanFull(),
                         
                         Forms\Components\Select::make('author_id')
                             ->relationship('author', 'name')    
                             ->searchable()
                             ->preload()
                             ->required()
+                            ->createOptionForm([
+                                Forms\Components\TextInput::make('name')
+                                    ->required()
+                                    ->maxLength(255),
+                            ]),
+
+                        Forms\Components\Select::make('categories')
+                            ->relationship('categories', 'name')
+                            ->multiple()
+                            ->preload()
+                            ->searchable()
                             ->createOptionForm([
                                 Forms\Components\TextInput::make('name')
                                     ->required()
@@ -100,6 +115,10 @@ class BookResource extends Resource
                 Tables\Columns\TextColumn::make('author.name')
                     ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('categories.name')
+                    ->badge()
+                    ->searchable(),
                 
                 Tables\Columns\TextColumn::make('publisher')
                     ->searchable()
@@ -144,6 +163,11 @@ class BookResource extends Resource
                 
                 Tables\Filters\SelectFilter::make('author')
                     ->relationship('author', 'name')
+                    ->searchable()
+                    ->preload(),
+
+                Tables\Filters\SelectFilter::make('categories')
+                    ->relationship('categories', 'name')
                     ->searchable()
                     ->preload(),
             ])

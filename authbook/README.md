@@ -1,58 +1,230 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+﻿# Laporan Praktikum Pemrograman Berbasis Web
+## Sistem Manajemen Buku Berbasis Laravel dan Filament 3.x
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Identitas Mahasiswa
+- **Nama:** Muhammad Arya Alqadi
+- **NPM:** 4524210058
+- **Kelas:** PBW A
+- **Mata Kuliah:** Pemrograman Berbasis Web
+- **Dosen Pengampu:** Bambang Riono Arsad, S.Kom., MMSI
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Daftar Isi
+1. [BAB I: Implementasi Sistem Dasar](#bab-i-implementasi-sistem-dasar)
+2. [BAB II: Kustomisasi dan Pengembangan Fitur](#bab-ii-kustomisasi-dan-pengembangan-fitur)
+3. [BAB III: Analisis Sistem dan Dokumentasi Teknis](#bab-iii-analisis-sistem-dan-dokumentasi-teknis)
+   - [3.1 Arsitektur Basis Data dan Alur Sistem](#31-arsitektur-basis-data-dan-alur-sistem)
+   - [3.2 Komparasi: Filament Admin Panel vs Pendekatan Tradisional](#32-komparasi-filament-admin-panel-vs-pendekatan-tradisional)
+   - [3.3 Refleksi Pembelajaran dan Rencana Pengembangan](#33-refleksi-pembelajaran-dan-rencana-pengembangan)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## BAB I: Implementasi Sistem Dasar
 
-## Learning Laravel
+Bagian ini memuat bukti tangkapan layar antarmuka aplikasi hasil instalasi, migrasi, *seeding*, dan pengujian operasi CRUD dasar.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1.1 Autentikasi dan Dasbor Pengguna
+Tampilan antarmuka dasbor panel administrasi setelah pengguna berhasil melakukan proses autentikasi (login) menggunakan kredensial yang valid.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+*(Tempatkan tangkapan layar di bawah ini)*
+<!-- ![Login Dashboard](docs/screenshots/01-login-dashboard.png) -->
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+---
 
-## Agentic Development
+### 1.2 Tabel Data Buku dan Paginasi
+Tampilan tabel utama pada menu *Books* yang menyajikan data buku hasil eksekusi *database seeder* sebanyak 50 entri data, lengkap dengan kolom ISBN, Judul, Penulis, Status, dan paginasi.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+*(Tempatkan tangkapan layar di bawah ini)*
+<!-- ![Daftar Buku](docs/screenshots/02-list-books.png) -->
 
-```bash
-composer require laravel/boost --dev
+---
 
-php artisan boost:install
+### 1.3 Formulir Penambahan Data Buku (Create Record)
+Tampilan formulir input penambahan buku baru yang memuat input teks untuk ISBN dan judul, pemilihan penulis melalui *relational select* dengan fitur pembuatan penulis baru secara langsung (*inline*), tahun terbit, status ketersediaan, serta area unggah berkas sampul buku.
+
+*(Tempatkan tangkapan layar di bawah ini)*
+<!-- ![Form Tambah Buku](docs/screenshots/03-form-create-book.png) -->
+
+---
+
+### 1.4 Pengujian Fitur Pencarian Data (Search)
+Hasil eksekusi pencarian data buku secara dinamis pada tabel tanpa memuat ulang (*reload*) halaman penuh.
+
+*(Tempatkan tangkapan layar di bawah ini)*
+<!-- ![Hasil Pencarian](docs/screenshots/04-search-result.png) -->
+
+---
+
+### 1.5 Pengujian Fitur Penyaringan (Filter)
+Tampilan tabel ketika filter aktif diterapkan, seperti memfilter data buku berdasarkan status ketersediaan (*Available* atau *Borrowed*), tahun terbit, maupun nama penulis.
+
+*(Tempatkan tangkapan layar di bawah ini)*
+<!-- ![Filter Aktif](docs/screenshots/05-filter-active.png) -->
+
+---
+
+## BAB II: Kustomisasi dan Pengembangan Fitur
+
+Pada bagian ini, dilakukan beberapa penyesuaian dan penambahan fungsionalitas di luar kebutuhan dasar sistem:
+
+### 2.1 Penambahan Kolom Deskripsi Buku
+- Struktur tabel `books` dimodifikasi dengan menambahkan kolom `description` bertipe `TEXT` (bersifat opsional/*nullable*).
+- Atribut `$fillable` pada model `Book` diperbarui agar kolom deskripsi dapat menerima masukan secara *mass-assignment*.
+- Formulir `BookResource` ditambahkan komponen `Textarea::make('description')` dengan ukuran penuh (*full-width span*).
+- Kelas `BookFactory` disesuaikan untuk menghasilkan teks deskripsi realistis menggunakan generator `fake()->paragraph()`.
+
+*(Tempatkan tangkapan layar form / detail deskripsi buku)*
+<!-- ![Field Deskripsi](docs/screenshots/tugas2-description.png) -->
+
+---
+
+### 2.2 Penerapan Kontrol Akses Berbasis Peran (Role-Based Access Control)
+- Struktur tabel `users` diperluas dengan kolom `role` yang mendukung tingkatan: `admin`, `staff`, dan `viewer`.
+- Data pengguna awal (*seeder*) diperbarui untuk membuat akun representatif untuk tiap peran:
+  - **Admin:** Memiliki seluruh hak akses operasional (melihat, menambah, mengubah, dan menghapus).
+  - **Staff:** Memiliki hak akses operasional terbatas (melihat, menambah, dan mengubah; tombol hapus dinonaktifkan).
+  - **Viewer:** Hanya memiliki hak akses membaca data (*read-only*; seluruh tombol aksi pembuatan, pengeditan, dan penghapusan dihilangkan).
+- Seluruh aturan hak akses tersebut diintegrasikan ke dalam `BookPolicy` dan didaftarkan pada sistem otorisasi aplikasi.
+
+*(Tempatkan tangkapan layar pengujian antarmuka untuk peran Staff dan Viewer)*
+<!-- ![Role Based Access](docs/screenshots/tugas2-role-access.png) -->
+
+---
+
+### 2.3 Widget Statistik dan Visualisasi Dasbor
+Panel dasbor diperkaya dengan komponen visual bawaan Filament:
+- **`BookStatsOverview`:** Menampilkan kartu ringkasan berisi jumlah keseluruhan koleksi buku, total penulis, buku berstatus tersedia, dan buku yang sedang dipinjam.
+- **`BookStatusChart`:** Menampilkan diagram donat (*doughnut chart*) untuk memvisualisasikan proporsi buku yang tersedia terhadap buku yang sedang dipinjam secara langsung dari basis data.
+
+*(Tempatkan tangkapan layar widget dan grafik pada dasbor)*
+<!-- ![Widget Dasbor](docs/screenshots/tugas2-widgets.png) -->
+
+---
+
+### 2.4 Sistem Relasi Kategori Buku (Many-to-Many)
+- Dibuat tabel `categories` serta tabel penghubung (*pivot table*) `book_category` yang menerapkan relasi kunci asing (*foreign key*) dengan integritas referensial *cascade on delete*.
+- Model `Book` dan `Category` dihubungkan menggunakan relasi Eloquent `belongsToMany`.
+- Komponen input pada formulir `BookResource` dilengkapi dengan `Select` bertipe jamak (*multiple select*) yang terhubung ke relasi kategori, memungkinkan pemilihan beberapa kategori sekaligus untuk satu buku.
+
+*(Tempatkan tangkapan layar pemilihan multi-kategori pada formulir buku)*
+<!-- ![Relasi Kategori](docs/screenshots/tugas2-categories.png) -->
+
+---
+
+## BAB III: Analisis Sistem dan Dokumentasi Teknis
+
+### 3.1 Arsitektur Basis Data dan Alur Sistem
+
+#### Diagram Hubungan Entitas (Entity Relationship Diagram)
+
+```mermaid
+erDiagram
+    USERS {
+        bigint id PK
+        varchar name
+        varchar email UK
+        varchar password
+        varchar role "admin / staff / viewer"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    AUTHORS {
+        bigint id PK
+        varchar name
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    BOOKS {
+        bigint id PK
+        varchar isbn UK
+        varchar title
+        text description
+        bigint author_id FK
+        varchar publisher
+        year year
+        varchar cover
+        enum status "available / borrowed"
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    CATEGORIES {
+        bigint id PK
+        varchar name
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    BOOK_CATEGORY {
+        bigint id PK
+        bigint book_id FK
+        bigint category_id FK
+        timestamp created_at
+        timestamp updated_at
+    }
+
+    AUTHORS ||--o{ BOOKS : "hasMany (1:N)"
+    BOOKS ||--o{ BOOK_CATEGORY : "belongsToMany (N:N)"
+    CATEGORIES ||--o{ BOOK_CATEGORY : "belongsToMany (N:N)"
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+#### Penjelasan Relasi Antar-Entitas
+1. **Relasi Penulis dan Buku (`authors` ke `books` - One-to-Many):**
+   Setiap buku diasosiasikan dengan tepat satu penulis, sedangkan seorang penulis dapat menulis beberapa judul buku. Relasi ini direpresentasikan melalui kolom `author_id` pada tabel `books`. Aturan `onDelete('cascade')` diterapkan agar apabila sebuah entri penulis dihapus, buku-buku yang terikat dengan penulis tersebut ikut terhapus demi menjaga konsistensi data.
+2. **Relasi Buku dan Kategori (`books` ke `categories` - Many-to-Many):**
+   Sebuah buku dapat dikelompokkan ke dalam beberapa genre atau kategori, dan satu kategori dapat mencakup banyak buku. Hubungan banyak-ke-banyak ini direalisasikan menggunakan tabel perantara `book_category` yang memuat pasangan kunci `book_id` dan `category_id`.
+3. **Entitas Pengguna (`users`):**
+   Tabel ini bertindak sebagai basis data autentikasi. Kolom `role` menentukan otorisasi pengguna saat berinteraksi dengan sumber daya di panel admin melalui mekanisme evaluasi *Policy*.
 
-## Contributing
+#### Alur Pemrosesan Permintaan (Request-to-Response Lifecycle)
+1. **Permintaan Klien (Request):** Klien mengirimkan permintaan HTTP ke rute panel administrasi (contoh: `GET /admin/books`).
+2. **Penyaringan Middleware:** Permintaan divalidasi oleh *middleware stack* Laravel, termasuk verifikasi sesi aktif dan pemeriksaan apakah pengguna telah terautentikasi.
+3. **Inisialisasi Panel dan Otorisasi Sumber Daya:** Filament mengenali rute yang diminta dan memeriksa hak akses pengguna melalui method `viewAny()` pada `BookPolicy`. Permintaan ditolak (kode status HTTP 403) jika peran pengguna tidak diizinkan.
+4. **Eksekusi Kueri Eloquent:** Komponen tabel mengeksekusi kueri teroptimasi dengan *eager loading* untuk memuat relasi `author` dan `categories`, mencegah timbulnya permasalahan performa *N+1 query*.
+5. **Kompilasi Livewire dan Perenderan Blade:** Komponen dirender ke dalam bentuk HTML menggunakan struktur Blade terintegrasi dengan Livewire untuk mendukung interaktivitas asynchronous.
+6. **Tanggapan Klien (Response):** Dokumen HTML dikirimkan kembali ke peramban. Interaksi lanjutan pengguna seperti pencarian atau pengurutan kolom ditangani melalui panggilan AJAX reaktif oleh Livewire tanpa memicu pemuatan ulang halaman secara menyeluruh.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+### 3.2 Komparasi: Filament Admin Panel vs Pendekatan Tradisional
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+| Parameter Komparasi | Pendekatan Tradisional (Controller & Blade Manual) | Pendekatan Modern (Laravel & Filament 3.x) |
+| :--- | :--- | :--- |
+| **Waktu Siklus Pengembangan** | Memerlukan waktu relatif lama karena developer harus mendefinisikan rute, controller, form request, dan berkas view blade secara terpisah. | Sangat efisien; seluruh antarmuka tabel, formulir, dan validasi didefinisikan secara deklaratif dalam satu berkas *Resource*. |
+| **Konsistensi Antarmuka Pengguna** | Bergantung sepenuhnya pada konsistensi penulisan CSS/HTML oleh pengembang, berpotensi menghasilkan UI yang bervariasi. | Memiliki konsistensi visual tinggi berkat integrasi komponen UI bawaan yang berbasis Tailwind CSS. |
+| **Ketersediaan Fitur Bawaan** | Fungsionalitas seperti *real-time search*, *dynamic filtering*, *bulk delete*, paginasi, dan *modal preview* harus diprogram manual. | Seluruh fungsionalitas tabel modern telah tersedia secara bawaan dan siap digunakan melalui konfigurasi method chaining. |
+| **Fleksibilitas Desain Antarmuka** | Bebas tanpa batasan konvensi; sangat ideal untuk antarmuka publik dengan arsitektur visual khusus. | Terikat pada struktur dan pola komponen dasbor admin; kurang cocok diaplikasikan pada *public-facing landing page*. |
+| **Pemeliharaan Kode (*Maintenance*)** | Beban perawatan berkas tinggi karena kode tersebar di berbagai layer (Routes, Controller, Form Requests, Views). | Kode terpusat pada kelas *Resource*, mempermudah pelacakan dan modifikasi skema field di masa mendatang. |
 
-## Security Vulnerabilities
+#### Rekomendasi Penggunaan
+- **Gunakan Filament ketika:** Aplikasi berfokus pada manajemen data internal (*back-office*), CMS, panel admin SaaS, atau saat proyek membutuhkan *Rapid Application Development* (RAD) dengan tenggat waktu singkat.
+- **Gunakan Pendekatan Tradisional ketika:** Membangun antarmuka utama pengguna (*consumer-facing application*), sistem dengan alur bisnis yang sangat spesifik dan membutuhkan perancangan UI/UX kustom dari awal.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+### 3.3 Refleksi Pembelajaran dan Rencana Pengembangan
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Hal yang Dipelajari
+- Konsep perancangan antarmuka secara deklaratif (*Declarative UI Paradigm*) dalam ekosistem PHP dan Livewire.
+- Penerapan pemodelan basis data relasional kompleks (*One-to-Many* dan *Many-to-Many*) serta integrasinya ke dalam komponen formulir jamak.
+- Implementasi prinsip keamanan aplikasi melalui pembatasan wewenang pengguna (*Role-Based Access Control*) menggunakan kelas *Policy*.
+- Pemanfaatan komponen analitik berbasis widget untuk menyajikan visualisasi data yang informatif.
+
+#### Kendala Teknis dan Penanganan Masalah
+1. **Penerapan Fitur PHP 8 Attributes pada Laravel 12:**
+   - *Kendala:* Struktur berkas model pada rilis Laravel terbaru menggunakan atribut PHP modern (`#[Fillable]`) menggantikan properti terlindungi konvensional.
+   - *Solusi:* Mengadaptasi sintaks atribut dengan menyematkan kolom peran baru langsung ke dalam deklarasi atribut di atas definisi kelas model.
+2. **Deteksi Karakter Byte Order Mark (BOM) pada Berkas Sumber:**
+   - *Kendala:* Terjadi galat fatal penempatan *namespace* akibat adanya karakter tersembunyi UTF-8 BOM pada permulaan berkas PHP.
+   - *Solusi:* Melakukan pembersihan karakter BOM secara terprogram pada seluruh berkas kode sumber PHP yang terdampak.
+3. **Penyediaan Akses Tautan Berkas Statis (*Storage Symlink*):**
+   - *Kendala:* Berkas citra sampul buku yang diunggah tidak dapat diakses langsung oleh peramban karena berada di direktori privat.
+   - *Solusi:* Menjalankan perintah `php artisan storage:link` untuk merefleksikan direktori penyimpanan berkas publik ke direktori akar web.
+
+#### Rencana Pengembangan Lanjutan
+- **Sistem Sirkulasi dan Transaksi:** Mengembangkan modul peminjaman buku yang mencatat identitas peminjam, tanggal batas kembali, serta kalkulasi denda keterlambatan secara otomatis.
+- **Pelaporan dan Ekspor Data:** Menyediakan utilitas pencetakan dokumen inventaris koleksi buku dalam format PDF dan spreadsheet (Excel).
+- **Notifikasi Terjadwal:** Mengimplementasikan pengingat otomatis melalui surat elektronik (*email reminder*) bagi anggota perpustakaan yang mendekati tenggat waktu peminjaman.

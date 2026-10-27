@@ -37,9 +37,16 @@ class ViewBook extends ViewRecord
                         Infolists\Components\TextEntry::make('title')
                             ->size(Infolists\Components\TextEntry\TextEntrySize::Large)
                             ->weight('bold'),
+
+                        Infolists\Components\TextEntry::make('description')
+                            ->columnSpanFull(),
                         
                         Infolists\Components\TextEntry::make('author.name')
                             ->label('Author'),
+
+                        Infolists\Components\TextEntry::make('categories.name')
+                            ->label('Categories')
+                            ->badge(),
                         
                         Infolists\Components\TextEntry::make('publisher'),
                         
