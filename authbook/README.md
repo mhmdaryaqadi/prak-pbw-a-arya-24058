@@ -69,8 +69,7 @@ Pada bagian ini, dilakukan beberapa penyesuaian dan penambahan fungsionalitas di
 - Formulir `BookResource` ditambahkan komponen `Textarea::make('description')` dengan ukuran penuh (*full-width span*).
 - Kelas `BookFactory` disesuaikan untuk menghasilkan teks deskripsi realistis menggunakan generator `fake()->paragraph()`.
 
-*(Tempatkan tangkapan layar form / detail deskripsi buku)*
-<!-- ![Field Deskripsi](docs/screenshots/tugas2-description.png) -->
+<img width="1919" height="987" alt="image" src="https://github.com/user-attachments/assets/343b828f-052c-404d-88d6-a9e9b29152f9" />
 
 ---
 
@@ -82,8 +81,7 @@ Pada bagian ini, dilakukan beberapa penyesuaian dan penambahan fungsionalitas di
   - **Viewer:** Hanya memiliki hak akses membaca data (*read-only*; seluruh tombol aksi pembuatan, pengeditan, dan penghapusan dihilangkan).
 - Seluruh aturan hak akses tersebut diintegrasikan ke dalam `BookPolicy` dan didaftarkan pada sistem otorisasi aplikasi.
 
-*(Tempatkan tangkapan layar pengujian antarmuka untuk peran Staff dan Viewer)*
-<!-- ![Role Based Access](docs/screenshots/tugas2-role-access.png) -->
+<img width="1919" height="989" alt="image" src="https://github.com/user-attachments/assets/5a993e07-b67d-44b2-8dad-2e7d04b09dae" />
 
 ---
 
@@ -92,8 +90,7 @@ Panel dasbor diperkaya dengan komponen visual bawaan Filament:
 - **`BookStatsOverview`:** Menampilkan kartu ringkasan berisi jumlah keseluruhan koleksi buku, total penulis, buku berstatus tersedia, dan buku yang sedang dipinjam.
 - **`BookStatusChart`:** Menampilkan diagram donat (*doughnut chart*) untuk memvisualisasikan proporsi buku yang tersedia terhadap buku yang sedang dipinjam secara langsung dari basis data.
 
-*(Tempatkan tangkapan layar widget dan grafik pada dasbor)*
-<!-- ![Widget Dasbor](docs/screenshots/tugas2-widgets.png) -->
+<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/cd178117-d104-4203-8fb4-d51474e68ee8" />
 
 ---
 
@@ -102,8 +99,7 @@ Panel dasbor diperkaya dengan komponen visual bawaan Filament:
 - Model `Book` dan `Category` dihubungkan menggunakan relasi Eloquent `belongsToMany`.
 - Komponen input pada formulir `BookResource` dilengkapi dengan `Select` bertipe jamak (*multiple select*) yang terhubung ke relasi kategori, memungkinkan pemilihan beberapa kategori sekaligus untuk satu buku.
 
-*(Tempatkan tangkapan layar pemilihan multi-kategori pada formulir buku)*
-<!-- ![Relasi Kategori](docs/screenshots/tugas2-categories.png) -->
+<img width="1919" height="991" alt="image" src="https://github.com/user-attachments/assets/c5443aff-d9ae-4855-9d57-a54d619c0578" />
 
 ---
 
