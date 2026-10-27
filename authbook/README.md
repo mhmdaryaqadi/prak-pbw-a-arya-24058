@@ -27,40 +27,35 @@ Bagian ini memuat bukti tangkapan layar antarmuka aplikasi hasil instalasi, migr
 ### 1.1 Autentikasi dan Dasbor Pengguna
 Tampilan antarmuka dasbor panel administrasi setelah pengguna berhasil melakukan proses autentikasi (login) menggunakan kredensial yang valid.
 
-*(Tempatkan tangkapan layar di bawah ini)*
-<!-- ![Login Dashboard](docs/screenshots/01-login-dashboard.png) -->
+<img width="1919" height="983" alt="Cuplikan layar 2026-10-27 090727" src="https://github.com/user-attachments/assets/0f2dd122-461f-4442-9303-88f558fca58e" />
 
 ---
 
 ### 1.2 Tabel Data Buku dan Paginasi
 Tampilan tabel utama pada menu *Books* yang menyajikan data buku hasil eksekusi *database seeder* sebanyak 50 entri data, lengkap dengan kolom ISBN, Judul, Penulis, Status, dan paginasi.
 
-*(Tempatkan tangkapan layar di bawah ini)*
-<!-- ![Daftar Buku](docs/screenshots/02-list-books.png) -->
+<img width="1919" height="987" alt="Cuplikan layar 2026-10-27 090759" src="https://github.com/user-attachments/assets/42ab2636-dd96-4f5c-b7c4-c030611d98af" />
 
 ---
 
 ### 1.3 Formulir Penambahan Data Buku (Create Record)
 Tampilan formulir input penambahan buku baru yang memuat input teks untuk ISBN dan judul, pemilihan penulis melalui *relational select* dengan fitur pembuatan penulis baru secara langsung (*inline*), tahun terbit, status ketersediaan, serta area unggah berkas sampul buku.
 
-*(Tempatkan tangkapan layar di bawah ini)*
-<!-- ![Form Tambah Buku](docs/screenshots/03-form-create-book.png) -->
+<img width="1919" height="991" alt="Cuplikan layar 2026-10-27 090858" src="https://github.com/user-attachments/assets/bf6e6b55-c91b-471c-86e1-41726722dca3" />
 
 ---
 
 ### 1.4 Pengujian Fitur Pencarian Data (Search)
 Hasil eksekusi pencarian data buku secara dinamis pada tabel tanpa memuat ulang (*reload*) halaman penuh.
 
-*(Tempatkan tangkapan layar di bawah ini)*
-<!-- ![Hasil Pencarian](docs/screenshots/04-search-result.png) -->
+<img width="1919" height="984" alt="Cuplikan layar 2026-10-27 090953" src="https://github.com/user-attachments/assets/9f3e88ff-6b44-4753-9949-54db37005155" />
 
 ---
 
 ### 1.5 Pengujian Fitur Penyaringan (Filter)
 Tampilan tabel ketika filter aktif diterapkan, seperti memfilter data buku berdasarkan status ketersediaan (*Available* atau *Borrowed*), tahun terbit, maupun nama penulis.
 
-*(Tempatkan tangkapan layar di bawah ini)*
-<!-- ![Filter Aktif](docs/screenshots/05-filter-active.png) -->
+<img width="1919" height="992" alt="Cuplikan layar 2026-10-27 091106" src="https://github.com/user-attachments/assets/a3a11aaf-d426-45b3-aeb9-f4737f0eb732" />
 
 ---
 
